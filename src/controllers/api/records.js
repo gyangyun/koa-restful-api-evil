@@ -77,8 +77,9 @@ recordsController.show = async (ctx, next) => {
 
 recordsController.display = async (ctx, next) => {
   try {
-    const dnamesStr = ctx.request.body['dnames']
-    const dnames = JSON.parse(dnamesStr)
+    console.log(ctx.request.body)
+    const dnamesOld = ctx.request.body
+    const dnames = dnamesOld.map(x => x.match(/(?:\w+\.){1,}\w+/)[0])
     if (dnames) {
       if (dnames.length > 20) {
         throw new ctx.APIError('records:display_error', 'MAX limit 20/request')
