@@ -77,7 +77,6 @@ recordsController.show = async (ctx, next) => {
 
 recordsController.display = async (ctx, next) => {
   try {
-    console.log(ctx.request.body)
     const dnamesOld = ctx.request.body
     const dnames = dnamesOld.map(x => x.match(/(?:\w+\.){1,}\w+/)[0])
     if (dnames) {
