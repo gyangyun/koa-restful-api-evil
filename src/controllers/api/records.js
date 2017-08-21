@@ -107,7 +107,7 @@ recordsController.display = async (ctx, next) => {
         ctx.rest({
           code: 'success',
           message: 'Displayed some domain names successfully',
-          data: records
+          data: rv
         })
       } else {
         throw new ctx.APIError('records:display_error', 'No such queryRecord')
